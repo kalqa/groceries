@@ -1,7 +1,7 @@
 package com.list.groceries.controller;
 
-import com.list.groceries.model.product.Product;
-import com.list.groceries.model.product.ProductRepository;
+import com.list.groceries.product.Product;
+import com.list.groceries.repository.ProductRepository;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

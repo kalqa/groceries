@@ -1,6 +1,6 @@
 package com.list.groceries.controller;
 
-import com.list.groceries.model.product.ProductRepository;
+import com.list.groceries.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
