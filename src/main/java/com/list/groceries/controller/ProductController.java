@@ -1,7 +1,12 @@
 package com.list.groceries.controller;
 
+import com.list.groceries.model.product.Product;
+import com.list.groceries.model.product.ProductRepository;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,8 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/products")
 public class ProductController {
 
-    @GetMapping(produces = "application/json")
+    ProductRepository productRepository;
+
+    public ProductController(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> allProducts() {
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Product addNewProduct(@RequestBody Product product) {
+        return productRepository.save(product);
     }
 }
