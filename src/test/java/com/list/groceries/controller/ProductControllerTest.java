@@ -1,8 +1,7 @@
 package com.list.groceries.controller;
 
-import com.list.groceries.repository.ProductRepository;
+import com.list.groceries.product.ProductService;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -42,12 +42,12 @@ class ProductControllerTest {
 class MockMvcConfig {
 
     @Bean
-    ProductRepository productRepository() {
-        return BDDMockito.mock(ProductRepository.class);
+    ProductService productRepository() {
+        return mock(ProductService.class);
     }
 
     @Bean
-    ProductController productController(ProductRepository productRepository) {
-        return new ProductController(productRepository);
+    ProductController productController(ProductService productService) {
+        return new ProductController(productService);
     }
 }

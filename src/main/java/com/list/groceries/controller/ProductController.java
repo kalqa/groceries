@@ -3,7 +3,7 @@ package com.list.groceries.controller;
 import java.util.List;
 
 import com.list.groceries.product.Product;
-import com.list.groceries.repository.ProductRepository;
+import com.list.groceries.product.ProductService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,20 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/products")
 public class ProductController {
 
-    ProductRepository productRepository;
+    ProductService productService;
 
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> allProducts() {
-        final List<Product> all = productRepository.findAll();
+        final List<Product> all = productService.getAllProducts();
         return ResponseEntity.ok(all);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Product addNewProduct(@RequestBody Product product) {
-        return productRepository.save(product);
+        return productService.addNewProduct(product);
     }
 }
