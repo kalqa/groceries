@@ -1,5 +1,7 @@
 package com.list.groceries.controller;
 
+import java.util.List;
+
 import com.list.groceries.product.Product;
 import com.list.groceries.repository.ProductRepository;
 import org.springframework.http.MediaType;
@@ -21,11 +23,12 @@ public class ProductController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> allProducts() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<List<Product>> allProducts() {
+        final List<Product> all = productRepository.findAll();
+        return ResponseEntity.ok(all);
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Product addNewProduct(@RequestBody Product product) {
         return productRepository.save(product);
     }
