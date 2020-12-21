@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/products")
 public class ProductController {
 
-    @GetMapping
+    @GetMapping(produces = "application/json")
     public ResponseEntity<Void> allProducts() {
         return ResponseEntity.ok().build();
     }

@@ -7,7 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -17,8 +20,12 @@ class ProductControllerTest {
 
     @Test
     public void shouldReturnCorrectMessageFromController(@Autowired MockMvc mockMvc) throws Exception {
-        mockMvc.perform(get("/products"))
-                .andExpect(status().isOk());
+        final MvcResult mvcResult = mockMvc.perform(get("/products"))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        final String contentAsString = mvcResult.getResponse().getContentAsString();
+        assertThat(contentAsString).isEqualTo("");
     }
 }
 
