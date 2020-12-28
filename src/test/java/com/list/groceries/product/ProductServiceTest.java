@@ -4,9 +4,13 @@ import java.util.List;
 
 import com.list.groceries.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 class ProductServiceTest extends ProductTestBase {
@@ -15,24 +19,28 @@ class ProductServiceTest extends ProductTestBase {
     ProductService productService = new ProductService(productRepository);
 
     @Test
-    public void listAllProducts() {
+    public void should_list_all_products_correctly() {
         final List<Product> expectedProducts = aProducts(
-                aProduct("Chleb"),
-                aProduct("Mieso"));
+                aChleb(),
+                aMieso());
         when(productRepository.findAll()).thenReturn(expectedProducts);
 
         final List<Product> allProducts = productService.getAllProducts();
 
         assertThat(allProducts).isEqualTo(expectedProducts);
+        BDDMockito.then(productRepository).should(times(1)).findAll();
     }
 
     @Test
-    public void createProductInRepository() {
-        final Product expectedProduct = aProduct("Chleb");
+    public void should_add_product_to_database() {
+        final Product expectedProduct = aChleb();
         when(productRepository.save(expectedProduct)).thenReturn(expectedProduct);
 
         final Product product = productService.addNewProduct(expectedProduct);
 
-        assertThat(product).isEqualTo(expectedProduct);
+        then(product.getId())
+                .as("Must represent the same product")
+                .isEqualTo(expectedProduct.getId());
+        BDDMockito.then(productRepository).should(times(1)).save(any(Product.class));
     }
 }
