@@ -1,5 +1,6 @@
 package com.list.groceries.offer.domain;
 
+import com.list.groceries.offer.infrastructure.HttpClientExample;
 
 public class JobService {
 
