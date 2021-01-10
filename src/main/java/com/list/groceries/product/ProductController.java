@@ -1,4 +1,4 @@
-package com.list.groceries.controller;
+package com.list.groceries.product;
 
 import java.util.List;
 

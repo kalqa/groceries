@@ -1,6 +1,5 @@
-package com.list.groceries.controller;
+package com.list.groceries.product;
 
-import com.list.groceries.product.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
