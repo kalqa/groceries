@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.list.groceries.product.domain.Product;
+
 public abstract class ProductTestBase {
 
     protected Product aProduct(String productName, Double price) {

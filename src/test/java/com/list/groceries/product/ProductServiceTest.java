@@ -3,6 +3,7 @@ package com.list.groceries.product;
 import java.util.List;
 
 import com.list.groceries.product.domain.Product;
+import com.list.groceries.product.domain.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 
