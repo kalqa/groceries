@@ -9,7 +9,7 @@ public class JobService {
     public JobOffer getJobFromService(){
         HttpClientExample httpClient = new HttpClientExample();
         //http call
-        JobOfferResponse response = httpClient.get("https://joboffers.com");
+        JobOfferResponse response = httpClient.getOffer("https://joboffers.com");
         return jobOfferMapper.map(response);
     }
 }

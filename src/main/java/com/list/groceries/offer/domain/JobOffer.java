@@ -4,12 +4,26 @@ public class JobOffer {
 
     String position;
     String salary;
-    String description;
 
-    private JobOffer(String position, String salary, String description) {
+    private JobOffer(String position, String salary) {
         this.position = position;
         this.salary = salary;
-        this.description = description;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
     }
 
     public static Builder builder() {
@@ -20,7 +34,6 @@ public class JobOffer {
 
         private String position;
         private String salary;
-        private String description;
 
         public Builder position(String position) {
             this.position = position;
@@ -32,11 +45,6 @@ public class JobOffer {
             return this;
         }
 
-        public Builder description(String description) {
-            this.description = description;
-            return this;
-        }
-
         public JobOffer build() {
             if (position.isEmpty()) {
                 throw new IllegalStateException("Position cannot be empty");
@@ -44,10 +52,7 @@ public class JobOffer {
             if (salary.isEmpty()) {
                 throw new IllegalStateException("Salary cannot be empty");
             }
-            if (description.isEmpty()) {
-                throw new IllegalStateException("Salary cannot be empty");
-            }
-            return new JobOffer(position, salary, description);
+            return new JobOffer(position, salary);
         }
     }
 }

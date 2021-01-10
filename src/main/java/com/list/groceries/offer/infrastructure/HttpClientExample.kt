@@ -1,10 +1,17 @@
-package com.list.groceries.offer.infrastructure;
+package com.list.groceries.offer.infrastructure
 
-import com.list.groceries.offer.domain.JobOfferResponse;
+import com.list.groceries.offer.domain.JobOfferResponse
 
-public class HttpClientExample {
+class HttpClientExample {
 
-    public JobOfferResponse get(String url) {
-        return new JobOfferResponse("developer", 4000, "B2B");
+    fun getOffer(url: String?): JobOfferResponse {
+        return JobOfferResponse("developer", 4000, "B2B")
+    }
+
+    fun getOffers(url: String?): List<JobOfferResponse> {
+        return listOf<JobOfferResponse>(
+            JobOfferResponse("developer", 4000, "B2B"),
+            JobOfferResponse("bankier", 3200, "B2B"),
+        )
     }
 }

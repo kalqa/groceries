@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Builder
+
 public class Product {
 
     @Id
@@ -21,6 +21,7 @@ public class Product {
 
     private Double price;
 
+    @Builder
     public Product(String name, Double price) {
         this.name = name;
         this.price = price;
