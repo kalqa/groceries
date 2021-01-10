@@ -2,8 +2,7 @@ package com.list.groceries.product;
 
 import java.util.List;
 
-import com.list.groceries.product.Product;
-import com.list.groceries.product.ProductService;
+import com.list.groceries.product.domain.Product;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
