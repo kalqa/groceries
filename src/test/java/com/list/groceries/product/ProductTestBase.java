@@ -12,11 +12,11 @@ public abstract class ProductTestBase {
         return new Product(productName, price);
     }
 
-    public Product aChleb(){
+    protected Product aBread(){
         return aProduct("Chleb", 2.55);
     }
 
-    public Product aMieso(){
+    protected Product aMeat(){
         return aProduct("Mieso", 3.22);
     }
 

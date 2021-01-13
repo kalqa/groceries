@@ -22,8 +22,8 @@ class ProductServiceTest extends ProductTestBase {
     @Test
     public void should_list_all_products_correctly() {
         final List<Product> expectedProducts = aProducts(
-                aChleb(),
-                aMieso());
+                aBread(),
+                aMeat());
         when(productRepository.findAll()).thenReturn(expectedProducts);
 
         final List<Product> allProducts = productService.getAllProducts();
@@ -34,7 +34,7 @@ class ProductServiceTest extends ProductTestBase {
 
     @Test
     public void should_add_product_to_database() {
-        final Product expectedProduct = aChleb();
+        final Product expectedProduct = aBread();
         when(productRepository.save(expectedProduct)).thenReturn(expectedProduct);
 
         final Product product = productService.addNewProduct(expectedProduct);
