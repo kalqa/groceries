@@ -19,4 +19,10 @@ public class JobOffersEditorFacade {
         final List<JobOffer> developerOffers = jobOfferMapper.mapListOfOffers(jobOfferResponse);
         return jobOffersEditor.editDeveloperOffers(developerOffers);
     }
+
+    public List<JobOffer> getEditedAccountOffers() {
+        final List<JobOfferResponse> jobOfferResponse = httpClientExample.getOffers("https://joboffers.com");
+        final List<JobOffer> developerOffers = jobOfferMapper.mapListOfOffers(jobOfferResponse);
+        return jobOffersEditor.editDeveloperOffers(developerOffers);
+    }
 }
