@@ -5,8 +5,6 @@ import java.util.List;
 import com.list.groceries.product.domain.ProductFacade;
 import com.list.groceries.product.domain.dto.ProductDto;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +19,7 @@ public class ProductController {
 
     ProductFacade productFacade;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     public ResponseEntity<List<ProductDto>> allProducts() {
         return ResponseEntity.ok(productFacade.getAllProducts());
     }

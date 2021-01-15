@@ -20,13 +20,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ProductControllerTest {
 
     @Test
-    public void shouldReturnCorrectMessageFromControllerGet(@Autowired MockMvc mockMvc) throws Exception {
+    public void should_return_status_ok_when_get_for_products_controller(@Autowired MockMvc mockMvc) throws Exception {
         mockMvc.perform(get("/products"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void shouldReturnCorrectMessageFromControllerPost(@Autowired MockMvc mockMvc) throws Exception {
+    public void should_return_status_ok_when_post_bread_for_products_controller(@Autowired MockMvc mockMvc) throws Exception {
         mockMvc.perform(post("/products")
                 .content(breadProduct())
                 .contentType(MediaType.APPLICATION_JSON))

@@ -7,6 +7,6 @@ import lombok.Getter;
 @Builder
 public class ProductDto {
 
-    private String name;
-    private Double price;
+    private final String name;
+    private final Double price;
 }

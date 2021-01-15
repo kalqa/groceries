@@ -2,8 +2,6 @@ package com.list.groceries.product.domain;
 
 import java.util.List;
 
-import com.list.groceries.product.domain.Product;
-import com.list.groceries.product.domain.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
