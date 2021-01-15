@@ -2,21 +2,20 @@ package com.list.groceries.product.domain;
 
 import java.util.List;
 
+import com.list.groceries.product.domain.dto.ProductDto;
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class ProductFacade {
 
     ProductRepository productRepository;
+    ProductService productService;
 
-
-
-    public Product show(String name) {
-        return productRepository.findByName(name);
+    public List<ProductDto> getAllProducts() {
+        throw new IllegalStateException("Not yet implemented");
     }
 
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
-    }
-
-    public Product add(Product product) {
-        return productRepository.save(product);
+    public ProductDto addNewProduct(ProductDto product) {
+        throw new IllegalStateException("Not yet implemented");
     }
 }

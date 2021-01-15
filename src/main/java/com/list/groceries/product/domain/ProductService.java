@@ -1,4 +1,4 @@
-package com.list.groceries.product;
+package com.list.groceries.product.domain;
 
 import java.util.List;
 
@@ -7,19 +7,19 @@ import com.list.groceries.product.domain.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductService {
+class ProductService {
 
     ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getAllProducts() {
+    List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    public Product addNewProduct(Product product) {
+    Product addNewProduct(Product product) {
         return productRepository.save(product);
     }
 }

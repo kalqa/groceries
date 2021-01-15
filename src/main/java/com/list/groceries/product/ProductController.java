@@ -2,7 +2,10 @@ package com.list.groceries.product;
 
 import java.util.List;
 
-import com.list.groceries.product.domain.Product;
+import com.list.groceries.product.domain.ProductFacade;
+import com.list.groceries.product.domain.dto.ProductDto;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,22 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/products")
+@AllArgsConstructor
 public class ProductController {
 
-    ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
+    ProductFacade productFacade;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Product>> allProducts() {
-        final List<Product> all = productService.getAllProducts();
-        return ResponseEntity.ok(all);
+    public ResponseEntity<List<ProductDto>> allProducts() {
+        return ResponseEntity.ok(productFacade.getAllProducts());
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product addNewProduct(@RequestBody Product product) {
-        return productService.addNewProduct(product);
+    @PostMapping
+    public ProductDto addNewProduct(@RequestBody ProductDto product) {
+        return productFacade.addNewProduct(product);
     }
 }

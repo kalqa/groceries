@@ -1,5 +1,6 @@
 package com.list.groceries.product;
 
+import com.list.groceries.product.domain.ProductFacade;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -41,12 +42,12 @@ class ProductControllerTest {
 class MockMvcConfig {
 
     @Bean
-    ProductService productRepository() {
-        return mock(ProductService.class);
+    ProductFacade productFacade() {
+        return mock(ProductFacade.class);
     }
 
     @Bean
-    ProductController productController(ProductService productService) {
-        return new ProductController(productService);
+    ProductController productController(ProductFacade productFacade) {
+        return new ProductController(productFacade);
     }
 }

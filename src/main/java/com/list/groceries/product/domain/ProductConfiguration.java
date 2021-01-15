@@ -1,13 +1,13 @@
 package com.list.groceries.product.domain;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-public class ProductConfiguration {
+@Configuration
+class ProductConfiguration {
 
     @Bean
-    public ProductFacade productFacade() {
-
-
-        return new ProductFacade();
+    ProductFacade productFacade(ProductRepository productRepository, ProductService productService) {
+        return new ProductFacade(productRepository, productService);
     }
 }

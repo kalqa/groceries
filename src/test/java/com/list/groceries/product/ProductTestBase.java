@@ -4,23 +4,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.list.groceries.product.domain.Product;
+import com.list.groceries.product.domain.dto.ProductDto;
 
 public abstract class ProductTestBase {
 
-    protected Product aProduct(String productName, Double price) {
-        return new Product(productName, price);
+    protected ProductDto aProduct(String productName, Double price) {
+        return ProductDto.builder().name(productName)
+                .price(price).build();
     }
 
-    public Product aChleb(){
+    public ProductDto aChleb() {
         return aProduct("Chleb", 2.55);
     }
 
-    public Product aMieso(){
+    public ProductDto aMieso() {
         return aProduct("Mieso", 3.22);
     }
 
-    protected List<Product> aProducts(Product... product) {
+    protected List<ProductDto> aProducts(ProductDto... product) {
         return new ArrayList<>(Arrays.asList(product));
     }
 }

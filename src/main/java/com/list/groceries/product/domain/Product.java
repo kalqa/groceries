@@ -5,13 +5,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Builder
-public class Product {
+@AllArgsConstructor
+@NoArgsConstructor
+class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,12 +25,4 @@ public class Product {
 
     private Double price;
 
-    public Product(String name, Double price) {
-        this.name = name;
-        this.price = price;
-    }
-
-    protected Product() {
-
-    }
 }
