@@ -10,4 +10,8 @@ class ProductDtoMapper {
                 .price(product.getPrice())
                 .build();
     }
+
+    static Product fromProductDto(ProductDto productDto) {
+        return new Product(productDto.getId(), productDto.getName(), productDto.getPrice());
+    }
 }
