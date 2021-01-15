@@ -12,7 +12,6 @@ import static com.list.groceries.product.domain.ProductDtoMapper.mapToProductDto
 @AllArgsConstructor
 public class ProductFacade {
 
-    ProductRepository productRepository;
     ProductService productService;
 
     public List<ProductDto> getAllProducts() {
@@ -23,6 +22,6 @@ public class ProductFacade {
 
     public ProductDto addNewProduct(ProductDto productDto) {
         final Product product = fromProductDto(productDto);
-        return mapToProductDto(productService.addNewProduct(product));
+        return mapToProductDto(productService.save(product));
     }
 }

@@ -1,6 +1,7 @@
-package com.list.groceries.product;
+package com.list.groceries.shoppinglist;
 
-import com.list.groceries.product.domain.ProductFacade;
+import com.list.groceries.list.ShoppingListController;
+import com.list.groceries.list.domain.ShoppingListFacade;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -17,24 +18,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest
 @ContextConfiguration(classes = MockMvcConfig.class)
-class ProductControllerTest extends ProductTestBase {
+class ShoppingListControllerTest {
 
     @Test
-    public void should_return_status_ok_when_get_for_products_controller(@Autowired MockMvc mockMvc) throws Exception {
-        mockMvc.perform(get("/products"))
+    public void should_return_status_ok_when_get_for_shoppinglist_controller(@Autowired MockMvc mockMvc) throws Exception {
+        mockMvc.perform(get("/shoppingList"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void should_return_status_ok_when_post_bread_for_products_controller(@Autowired MockMvc mockMvc) throws Exception {
-        mockMvc.perform(post("/products")
-                .content(breadProduct())
+    public void should_return_status_ok_when_post_mondaylist_for_shoppinglist_controller(@Autowired MockMvc mockMvc) throws Exception {
+        mockMvc.perform(post("/shoppingList")
+                .content(mondayShoppingList())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
-    private String breadProduct() {
-        return "{ \"productName\" : \"Chleb\"}";
+    private String mondayShoppingList() {
+        return "{ \"name\" : \"Lista na poniedziałek\"}";
     }
 }
 
@@ -42,12 +43,12 @@ class ProductControllerTest extends ProductTestBase {
 class MockMvcConfig {
 
     @Bean
-    ProductFacade productFacade() {
-        return mock(ProductFacade.class);
+    ShoppingListFacade shoppingListFacade() {
+        return mock(ShoppingListFacade.class);
     }
 
     @Bean
-    ProductController productController(ProductFacade productFacade) {
-        return new ProductController(productFacade);
+    ShoppingListController shoppingListController(ShoppingListFacade shoppingListFacade) {
+        return new ShoppingListController(shoppingListFacade);
     }
 }
