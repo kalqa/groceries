@@ -20,12 +20,12 @@ class ShoppingListController {
     ShoppingListFacade shoppingListFacade;
 
     @GetMapping
-    public ResponseEntity<List<ShoppingListDto>> allProducts() {
+    public ResponseEntity<List<ShoppingListDto>> findAllShoppingLists() {
         return ResponseEntity.ok(shoppingListFacade.findAllProductLists());
     }
 
     @PostMapping
-    public ShoppingListDto addNewProduct(@RequestBody ShoppingListDto shoppingListDto) {
+    public ShoppingListDto saveNewShoppingList(@RequestBody ShoppingListDto shoppingListDto) {
         return shoppingListFacade.saveNewShoppingList(shoppingListDto);
     }
 }
