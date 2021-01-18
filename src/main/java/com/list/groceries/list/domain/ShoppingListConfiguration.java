@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 class ShoppingListConfiguration {
 
     @Bean
-    ShoppingListFacade productFacade(ShoppingListRepository shoppingListRepository) {
+    ShoppingListFacade shoppingListFacade(ShoppingListRepository shoppingListRepository) {
         ShoppingListService shoppingListService = new ShoppingListService(shoppingListRepository);
         return new ShoppingListFacade(shoppingListService);
     }
