@@ -10,19 +10,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.list.groceries.product.domain.Product;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity(name = "SHOPPINGLIST")
 @Getter
 @Setter
-@Builder
 class ShoppingList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     private String name;
 

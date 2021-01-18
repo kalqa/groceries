@@ -7,6 +7,6 @@ import lombok.Getter;
 @Builder
 public class ShoppingListDto {
 
-    private final Long id;
+    private final long id;
     private final String name;
 }
