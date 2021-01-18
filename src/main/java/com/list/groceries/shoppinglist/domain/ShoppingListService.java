@@ -1,4 +1,4 @@
-package com.list.groceries.list.domain;
+package com.list.groceries.shoppinglist.domain;
 
 import java.util.List;
 

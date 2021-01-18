@@ -1,19 +1,24 @@
-package com.list.groceries.product.domain;
+package com.list.groceries.shoppinglist.domain;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
+import com.list.groceries.product.domain.Product;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "SHOPPINGLIST")
 @Getter
 @Setter
 @Builder
-public class Product {
+class ShoppingList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,5 +26,7 @@ public class Product {
 
     private String name;
 
-    private Double price;
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<Product> products;
 }

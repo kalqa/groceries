@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/products")
 @AllArgsConstructor
-public class ProductController {
+class ProductController {
 
     ProductFacade productFacade;
 

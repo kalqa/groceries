@@ -1,9 +1,9 @@
-package com.list.groceries.list;
+package com.list.groceries.shoppinglist;
 
 import java.util.List;
 
-import com.list.groceries.list.domain.ShoppingListFacade;
-import com.list.groceries.list.domain.dto.ShoppingListDto;
+import com.list.groceries.shoppinglist.domain.ShoppingListFacade;
+import com.list.groceries.shoppinglist.domain.dto.ShoppingListDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/shoppingList")
 @AllArgsConstructor
-public class ShoppingListController {
+class ShoppingListController {
 
     ShoppingListFacade shoppingListFacade;
 
@@ -26,6 +26,6 @@ public class ShoppingListController {
 
     @PostMapping
     public ShoppingListDto addNewProduct(@RequestBody ShoppingListDto shoppingListDto) {
-        return shoppingListFacade.addNewShoppingList(shoppingListDto);
+        return shoppingListFacade.saveNewShoppingList(shoppingListDto);
     }
 }

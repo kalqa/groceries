@@ -1,4 +1,4 @@
-package com.list.groceries.list.domain;
+package com.list.groceries.shoppinglist.domain;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

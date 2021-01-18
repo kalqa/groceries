@@ -1,7 +1,6 @@
 package com.list.groceries.shoppinglist;
 
-import com.list.groceries.list.ShoppingListController;
-import com.list.groceries.list.domain.ShoppingListFacade;
+import com.list.groceries.shoppinglist.domain.ShoppingListFacade;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
