@@ -24,4 +24,10 @@ public class ShoppingListFacade {
         final ShoppingList shoppingList = fromShoppingListDto(shoppingListDto);
         return mapToShoppingListDto(shoppingListService.save(shoppingList));
     }
+
+    public ShoppingListDto findListById(long listId) {
+        final ShoppingList list = shoppingListService.findListById(listId);
+        return mapToShoppingListDto(list);
+    }
+
 }

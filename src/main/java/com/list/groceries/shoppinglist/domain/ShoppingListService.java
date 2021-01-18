@@ -16,4 +16,10 @@ class ShoppingListService {
     public ShoppingList save(ShoppingList shoppingList) {
         return shoppingListRepository.save(shoppingList);
     }
+
+    public ShoppingList findListById(long listId) {
+        return shoppingListRepository.findById(listId)
+                .orElseThrow(IllegalStateException::new);
+    }
+
 }
