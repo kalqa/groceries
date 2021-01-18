@@ -2,6 +2,7 @@ package com.list.groceries.shoppinglist;
 
 import java.util.List;
 
+import com.list.groceries.product.domain.dto.ProductDto;
 import com.list.groceries.shoppinglist.domain.ShoppingListFacade;
 import com.list.groceries.shoppinglist.domain.dto.ShoppingListDto;
 import lombok.AllArgsConstructor;
@@ -33,5 +34,10 @@ class ShoppingListController {
     @GetMapping("/{listId}")
     public ShoppingListDto findListById(@PathVariable long listId) {
         return shoppingListFacade.findListById(listId);
+    }
+
+    @PostMapping("/{listId}/product")
+    public ShoppingListDto findListById(@PathVariable long listId, @RequestBody ProductDto productDto) {
+        return shoppingListFacade.saveProductToListById(listId, productDto);
     }
 }

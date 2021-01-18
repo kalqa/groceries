@@ -3,9 +3,11 @@ package com.list.groceries.shoppinglist.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.list.groceries.product.domain.dto.ProductDto;
 import com.list.groceries.shoppinglist.domain.dto.ShoppingListDto;
 import lombok.AllArgsConstructor;
 
+import static com.list.groceries.product.domain.ProductDtoMapper.fromProductDto;
 import static com.list.groceries.shoppinglist.domain.ShoppingListMapper.fromShoppingListDto;
 import static com.list.groceries.shoppinglist.domain.ShoppingListMapper.mapToShoppingListDto;
 
@@ -30,4 +32,8 @@ public class ShoppingListFacade {
         return mapToShoppingListDto(list);
     }
 
+    public ShoppingListDto saveProductToListById(long listId, ProductDto productDto) {
+        final ShoppingList save = shoppingListService.saveProductByListId(listId, fromProductDto(productDto));
+        return mapToShoppingListDto(save);
+    }
 }

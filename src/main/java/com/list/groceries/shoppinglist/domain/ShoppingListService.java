@@ -1,7 +1,9 @@
 package com.list.groceries.shoppinglist.domain;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.list.groceries.product.domain.Product;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -22,4 +24,9 @@ class ShoppingListService {
                 .orElseThrow(IllegalStateException::new);
     }
 
+    public ShoppingList saveProductByListId(long listId, Product product) {
+        final Optional<ShoppingList> list = shoppingListRepository.findById(listId);
+        list.ifPresent(shoppingList -> shoppingList.getProducts().add(product));
+        throw new IllegalStateException("error");
+    }
 }
