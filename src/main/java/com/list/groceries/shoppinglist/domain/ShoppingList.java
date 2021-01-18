@@ -22,7 +22,7 @@ public
 class ShoppingList {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shoppinglist_id")
     private long id;
 

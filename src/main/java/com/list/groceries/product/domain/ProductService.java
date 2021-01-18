@@ -20,4 +20,8 @@ class ProductService {
     Product save(Product product) {
         return productRepository.save(product);
     }
+
+    public List<Product> findAllProductsByListId(long listId) {
+        return productRepository.findAllByProductLists_id(listId);
+    }
 }
