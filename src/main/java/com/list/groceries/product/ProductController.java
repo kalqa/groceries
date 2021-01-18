@@ -29,9 +29,4 @@ class ProductController {
     public ProductDto addNewProduct(@RequestBody ProductDto product) {
         return productFacade.addNewProduct(product);
     }
-
-    @GetMapping("/{listId}")
-    public List<ProductDto> findProductsByListId(@PathVariable long listId) {
-        return productFacade.findProductsByListId(listId);
-    }
 }

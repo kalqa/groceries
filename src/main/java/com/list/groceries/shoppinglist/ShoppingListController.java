@@ -36,8 +36,4 @@ class ShoppingListController {
         return shoppingListFacade.findListById(listId);
     }
 
-    @PostMapping("/{listId}/product")
-    public ShoppingListDto findListById(@PathVariable long listId, @RequestBody ProductDto productDto) {
-        return shoppingListFacade.saveProductToListById(listId, productDto);
-    }
 }

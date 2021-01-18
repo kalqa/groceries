@@ -1,17 +1,15 @@
 package com.list.groceries.shoppinglist.domain;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
-import com.list.groceries.product.domain.Product;
+import com.list.groceries.listofproducts.domain.ListOfProducts;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,10 +26,6 @@ class ShoppingList {
 
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "list_products",
-            joinColumns = @JoinColumn(name = "shoppinglist_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products;
+    @OneToMany(mappedBy = "shoppingList")
+    private Set<ListOfProducts> listOfProducts;
 }

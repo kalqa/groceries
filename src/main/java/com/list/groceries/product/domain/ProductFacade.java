@@ -24,11 +24,4 @@ public class ProductFacade {
         final Product product = fromProductDto(productDto);
         return mapToProductDto(productService.save(product));
     }
-
-    public List<ProductDto> findProductsByListId(long listId) {
-        return productService.findAllProductsByListId(listId)
-                .stream()
-                .map(ProductDtoMapper::mapToProductDto)
-                .collect(Collectors.toList());
-    }
 }

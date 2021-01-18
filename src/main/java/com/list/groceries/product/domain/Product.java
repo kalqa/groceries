@@ -1,15 +1,15 @@
 package com.list.groceries.product.domain;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
-import com.list.groceries.shoppinglist.domain.ShoppingList;
+import com.list.groceries.listofproducts.domain.ListOfProducts;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +27,6 @@ public class Product {
 
     private Double price;
 
-    @ManyToMany(mappedBy = "products")
-    List<ShoppingList> productLists;
+    @OneToMany(mappedBy = "product")
+    private Set<ListOfProducts> listOfProducts;
 }

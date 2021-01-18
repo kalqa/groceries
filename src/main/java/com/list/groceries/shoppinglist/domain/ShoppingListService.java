@@ -24,9 +24,4 @@ class ShoppingListService {
                 .orElseThrow(IllegalStateException::new);
     }
 
-    public ShoppingList saveProductByListId(long listId, Product product) {
-        final Optional<ShoppingList> list = shoppingListRepository.findById(listId);
-        list.ifPresent(shoppingList -> shoppingList.getProducts().add(product));
-        throw new IllegalStateException("error");
-    }
 }
