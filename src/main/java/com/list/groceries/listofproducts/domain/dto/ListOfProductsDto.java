@@ -7,9 +7,9 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public
-class ListOfProductsDto {
+public class ListOfProductsDto {
 
-    ProductDto product;
-    ShoppingListDto shoppingList;
+    private final Long id;
+    private final ProductDto product;
+    private final ShoppingListDto shoppingList;
 }

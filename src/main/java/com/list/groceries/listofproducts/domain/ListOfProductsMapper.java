@@ -22,6 +22,7 @@ public class ListOfProductsMapper {
 
     public static ListOfProductsIdsDto mapToListOfProductsDtoIds(ListOfProducts list) {
         return ListOfProductsIdsDto.builder()
+                .id(list.getId())
                 .shoppingList(list.getShoppingList().getId())
                 .product(list.getProduct().getId())
                 .build();
@@ -29,6 +30,7 @@ public class ListOfProductsMapper {
 
     public static ListOfProductsDto mapToListOfProductsDto(ListOfProducts list) {
         return ListOfProductsDto.builder()
+                .id(list.getId())
                 .shoppingList(ShoppingListMapper
                         .mapToShoppingListDto(list.getShoppingList()))
                 .product(ProductDtoMapper.mapToProductDto(list.getProduct()))

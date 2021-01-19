@@ -20,4 +20,8 @@ class ListOfProductsService {
     List<ListOfProducts> findAll() {
         return repository.findAll();
     }
+
+    public void deleteById(long id) {
+        repository.deleteById(id);
+    }
 }

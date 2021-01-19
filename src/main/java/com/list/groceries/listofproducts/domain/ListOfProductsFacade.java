@@ -26,4 +26,8 @@ public class ListOfProductsFacade {
                 .map(ListOfProductsMapper::mapToListOfProductsDto)
                 .collect(Collectors.toList());
     }
+
+    public void deleteById(long id) {
+        listOfProductsService.deleteById(id);
+    }
 }
