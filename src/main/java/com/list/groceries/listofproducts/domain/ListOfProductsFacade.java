@@ -1,5 +1,7 @@
 package com.list.groceries.listofproducts.domain;
 
+import java.util.List;
+
 import com.list.groceries.listofproducts.domain.dto.ListOfProductsDto;
 import lombok.AllArgsConstructor;
 
@@ -14,5 +16,9 @@ public class ListOfProductsFacade {
     public ListOfProductsDto save(ListOfProductsDto listOfProductsDto) {
         final ListOfProducts listOfProducts = mapFromListOfProductsDto(listOfProductsDto);
         return mapToListOfProductsDto(listOfProductsService.save(listOfProducts));
+    }
+
+    public List<ListOfProducts> findAll() {
+        return listOfProductsService.findAll();
     }
 }
