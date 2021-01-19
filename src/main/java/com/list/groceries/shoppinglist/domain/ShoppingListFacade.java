@@ -31,4 +31,8 @@ public class ShoppingListFacade {
         final ShoppingList list = shoppingListService.findListById(listId);
         return mapToShoppingListDto(list);
     }
+
+    public void deleteById(long id) {
+        shoppingListService.deleteById(id);
+    }
 }

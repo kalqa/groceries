@@ -2,6 +2,7 @@ package com.list.groceries.shoppinglist.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,6 @@ class ShoppingList {
 
     private String name;
 
-    @OneToMany(mappedBy = "shoppingList")
+    @OneToMany(mappedBy = "shoppingList", cascade = CascadeType.REMOVE)
     private Set<ListOfProducts> listOfProducts;
 }

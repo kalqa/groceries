@@ -24,4 +24,8 @@ public class ProductFacade {
         final Product product = fromProductDto(productDto);
         return mapToProductDto(productService.save(product));
     }
+
+    public void deleteById(long id) {
+        productService.deleteById(id);
+    }
 }

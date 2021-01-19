@@ -1,9 +1,7 @@
 package com.list.groceries.shoppinglist.domain;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.list.groceries.product.domain.Product;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -24,4 +22,7 @@ class ShoppingListService {
                 .orElseThrow(IllegalStateException::new);
     }
 
+    public void deleteById(long id) {
+        shoppingListRepository.deleteById(id);
+    }
 }

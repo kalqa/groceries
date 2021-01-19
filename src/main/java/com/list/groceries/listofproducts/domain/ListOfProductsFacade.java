@@ -1,24 +1,29 @@
 package com.list.groceries.listofproducts.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.list.groceries.listofproducts.domain.dto.ListOfProductsDto;
+import com.list.groceries.listofproducts.domain.dto.ListOfProductsIdsDto;
 import lombok.AllArgsConstructor;
 
 import static com.list.groceries.listofproducts.domain.ListOfProductsMapper.mapFromListOfProductsDto;
-import static com.list.groceries.listofproducts.domain.ListOfProductsMapper.mapToListOfProductsDto;
+import static com.list.groceries.listofproducts.domain.ListOfProductsMapper.mapToListOfProductsDtoIds;
 
 @AllArgsConstructor
 public class ListOfProductsFacade {
 
     ListOfProductsService listOfProductsService;
 
-    public ListOfProductsDto save(ListOfProductsDto listOfProductsDto) {
-        final ListOfProducts listOfProducts = mapFromListOfProductsDto(listOfProductsDto);
-        return mapToListOfProductsDto(listOfProductsService.save(listOfProducts));
+    public ListOfProductsIdsDto save(ListOfProductsIdsDto listOfProductsIdsDto) {
+        final ListOfProducts listOfProducts = mapFromListOfProductsDto(listOfProductsIdsDto);
+        return mapToListOfProductsDtoIds(listOfProductsService.save(listOfProducts));
     }
 
-    public List<ListOfProducts> findAll() {
-        return listOfProductsService.findAll();
+    public List<ListOfProductsDto> findAll() {
+        return listOfProductsService.findAll()
+                .stream()
+                .map(ListOfProductsMapper::mapToListOfProductsDto)
+                .collect(Collectors.toList());
     }
 }
