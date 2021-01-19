@@ -12,7 +12,7 @@ import com.list.groceries.shoppinglist.domain.ShoppingList;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "list_of_products")
 @Getter
 @Setter
 public

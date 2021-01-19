@@ -14,7 +14,7 @@ import com.list.groceries.listofproducts.domain.ListOfProducts;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "SHOPPINGLIST")
+@Entity(name = "shoppinglist")
 @Getter
 @Setter
 public
