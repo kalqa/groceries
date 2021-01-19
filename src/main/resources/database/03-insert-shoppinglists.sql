@@ -1,5 +1,5 @@
 --liquibase formatted sql
---changeset kalqa:1
+--changeset kalqa:7
 insert into SHOPPINGLIST(shoppinglist_id, name)
 values (1, 'lista poniedziałkowa');
 insert into SHOPPINGLIST(shoppinglist_id, name)

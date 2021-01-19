@@ -1,6 +1,6 @@
 --liquibase formatted sql
 --changeset kalqa:1
-CREATE TABLE list_of_products
+CREATE TABLE LIST_OF_PRODUCTS
 (
     id              BIGINT AUTO_INCREMENT,
     product_id      BIGINT,
@@ -8,7 +8,8 @@ CREATE TABLE list_of_products
     primary key (id)
 );
 
-CREATE TABLE product
+--changeset kalqa:2
+CREATE TABLE PRODUCT
 (
     product_id BIGINT AUTO_INCREMENT,
     name       varchar(400),
@@ -16,15 +17,20 @@ CREATE TABLE product
     primary key (product_id)
 );
 
-CREATE TABLE shoppinglist
+--changeset kalqa:3
+CREATE TABLE SHOPPINGLIST
 (
     shoppinglist_id BIGINT AUTO_INCREMENT,
     name            varchar(400),
     primary key (shoppinglist_id)
 );
 
-alter TABLE list_of_products
-    add constraint product_id_list_of_products foreign key (product_id) references product;
+--changeset kalqa:4
+ALTER TABLE LIST_OF_PRODUCTS
+    ADD CONSTRAINT PRODUCT_ID_LIST_OF_PRODUCTS
+        FOREIGN KEY (product_id) REFERENCES PRODUCT (product_id);
 
-alter TABLE list_of_products
-    add constraint shoppinglist_id_list_of_products foreign key (shoppinglist_id) references shoppinglist;
+--changeset kalqa:5
+ALTER TABLE LIST_OF_PRODUCTS
+    ADD CONSTRAINT SHOPPINGLIST_ID_LIST_OF_PRODUCTS
+        FOREIGN KEY (shoppinglist_id) REFERENCES SHOPPINGLIST (shoppinglist_id);
