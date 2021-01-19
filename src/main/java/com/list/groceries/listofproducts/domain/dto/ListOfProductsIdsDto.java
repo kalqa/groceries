@@ -1,5 +1,7 @@
 package com.list.groceries.listofproducts.domain.dto;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -8,6 +10,10 @@ import lombok.Getter;
 public class ListOfProductsIdsDto {
 
     private final long id;
-    private final long product;
-    private final long shoppingList;
+
+    @NotNull
+    private final Long product;
+
+    @NotNull
+    private final Long shoppingList;
 }

@@ -2,6 +2,8 @@ package com.list.groceries.shoppinglist;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.list.groceries.shoppinglist.domain.ShoppingListFacade;
 import com.list.groceries.shoppinglist.domain.dto.ShoppingListDto;
 import lombok.AllArgsConstructor;
@@ -27,7 +29,7 @@ class ShoppingListController {
     }
 
     @PostMapping
-    public ShoppingListDto saveNewShoppingList(@RequestBody ShoppingListDto shoppingListDto) {
+    public ShoppingListDto saveNewShoppingList(@Valid @RequestBody ShoppingListDto shoppingListDto) {
         return shoppingListFacade.saveNewShoppingList(shoppingListDto);
     }
 

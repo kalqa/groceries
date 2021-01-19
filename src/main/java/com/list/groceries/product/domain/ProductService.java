@@ -2,6 +2,7 @@ package com.list.groceries.product.domain;
 
 import java.util.List;
 
+import com.list.groceries.product.domain.exceptions.ProductNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +23,10 @@ class ProductService {
     }
 
     public void deleteById(long id) {
-        productRepository.deleteById(id);
+        try {
+            productRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new ProductNotFoundException(id);
+        }
     }
 }

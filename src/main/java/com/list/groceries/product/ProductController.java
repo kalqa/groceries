@@ -2,6 +2,8 @@ package com.list.groceries.product;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.list.groceries.product.domain.ProductFacade;
 import com.list.groceries.product.domain.dto.ProductDto;
 import lombok.AllArgsConstructor;
@@ -27,7 +29,7 @@ class ProductController {
     }
 
     @PostMapping
-    public ProductDto addNewProduct(@RequestBody ProductDto product) {
+    public ProductDto addNewProduct(@Valid @RequestBody ProductDto product) {
         return productFacade.addNewProduct(product);
     }
 

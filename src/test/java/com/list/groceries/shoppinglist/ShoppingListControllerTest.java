@@ -33,6 +33,18 @@ class ShoppingListControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    public void should_return_status_bad_request_when_post_wrong_shoppinglist_for_shoppinglist_controller(@Autowired MockMvc mockMvc) throws Exception {
+        mockMvc.perform(post("/shoppingList")
+                .content(wrongMondayShoppingList())
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    private String wrongMondayShoppingList() {
+        return "{ \"name2\" : \"Lista na poniedziałek\"}";
+    }
+
     private String mondayShoppingList() {
         return "{ \"name\" : \"Lista na poniedziałek\"}";
     }

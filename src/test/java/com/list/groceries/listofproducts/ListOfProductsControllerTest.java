@@ -1,6 +1,6 @@
-package com.list.groceries.product;
+package com.list.groceries.listofproducts;
 
-import com.list.groceries.product.domain.ProductFacade;
+import com.list.groceries.listofproducts.domain.ListOfProductsFacade;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -16,30 +16,30 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest
 @ContextConfiguration(classes = MockMvcConfig.class)
-class ProductControllerTest {
+class ListOfProductsControllerTest {
 
     @Test
-    public void should_return_status_ok_when_post_bread_for_products_controller(@Autowired MockMvc mockMvc) throws Exception {
-        mockMvc.perform(post("/products")
-                .content(breadProduct())
+    public void should_return_ok_when_correct_list_of_products_posted(@Autowired MockMvc mockMvc) throws Exception {
+        mockMvc.perform(post("/listofproducts")
+                .content(listOfProducts())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void should_return_status_bad_request_when_post_wrong_bread_for_products_controller(@Autowired MockMvc mockMvc) throws Exception {
-        mockMvc.perform(post("/products")
-                .content(wrongBreadProduct())
+    public void should_return_bad_request_when_wrong_list_of_products_posted(@Autowired MockMvc mockMvc) throws Exception {
+        mockMvc.perform(post("/listofproducts")
+                .content(wrongListOfProducts())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
 
-    private String wrongBreadProduct() {
-        return "{ \"name\" : \"Chleb\"}";
+    private String listOfProducts() {
+        return "{\"product\": 0,\"shoppingList\": 0}";
     }
 
-    private String breadProduct() {
-        return "{ \"name\" : \"Chleb\", \"price\" : 2.55}";
+    private String wrongListOfProducts() {
+        return "{\"shoppingList\": 0}";
     }
 }
 
@@ -47,12 +47,12 @@ class ProductControllerTest {
 class MockMvcConfig {
 
     @Bean
-    ProductFacade productFacade() {
-        return mock(ProductFacade.class);
+    ListOfProductsFacade listOfProductsFacade() {
+        return mock(ListOfProductsFacade.class);
     }
 
     @Bean
-    ProductController productController(ProductFacade productFacade) {
-        return new ProductController(productFacade);
+    ListOfProductsController listOfProductsController(ListOfProductsFacade listOfProductsFacade) {
+        return new ListOfProductsController(listOfProductsFacade);
     }
 }

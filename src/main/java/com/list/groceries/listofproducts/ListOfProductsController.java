@@ -2,6 +2,8 @@ package com.list.groceries.listofproducts;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.list.groceries.listofproducts.domain.ListOfProductsFacade;
 import com.list.groceries.listofproducts.domain.dto.ListOfProductsDto;
 import com.list.groceries.listofproducts.domain.dto.ListOfProductsIdsDto;
@@ -22,7 +24,7 @@ class ListOfProductsController {
     ListOfProductsFacade facade;
 
     @PostMapping
-    public ListOfProductsIdsDto addNewListOfProducts(@RequestBody ListOfProductsIdsDto listOfProductsIdsDto) {
+    public ListOfProductsIdsDto addNewListOfProducts(@Valid @RequestBody ListOfProductsIdsDto listOfProductsIdsDto) {
         return facade.save(listOfProductsIdsDto);
     }
 
